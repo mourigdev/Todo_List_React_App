@@ -54,19 +54,19 @@ function App() {
     fetch(`https://todos-af6ae-default-rtdb.firebaseio.com/todos/${id}.json`, {
       method: "DELETE",
     })
-      .then((response) => {
-        console.log(response)
+    .then((response) => {
         console.log(response.status)
         if (response.status === 200) {
           console.log("yes")
           setItems(
             previousItems=>{
               const updateItems = previousItems.filter( item=> item.id !== id )
+
               return updateItems;
         }
         )
         }
-        return response.json();
+        // return response.json();
       })
       // .then((data) => {
       //   console.log(data)
@@ -85,19 +85,20 @@ function App() {
       method: "POST",
       body: JSON.stringify({
         bodyText: TodoText,
+        done : false
       }),
     }).then((response) => {
-      // Affichage()
-      if(response.status === 200){
-        setItems((previousItems) => {
-          const updatedData = [...previousItems];
-          updatedData.unshift({
+      Affichage()
+      // if(response.status === 200){
+      //   setItems((previousItems) => {
+      //     const updatedData = [...previousItems];
+      //     updatedData.unshift({
             
-            bodyText: TodoText,
-          });
-          return updatedData;
-        });
-      }
+      //       bodyText: TodoText,
+      //     });
+      //     return updatedData;
+      //   });
+      // }
 
     });
 
@@ -120,15 +121,107 @@ function App() {
 
   // }
 
+
+  const onDoneEdit = (id,bodyText,status) =>{
+    console.log(status)
+    console.log(id)
+    if(status !== true){
+      fetch(`https://todos-af6ae-default-rtdb.firebaseio.com/todos/${id}/done.json`, {
+      method: "PUT",
+      body: true,
+    })
+      .then((response) => {
+        console.log(response)
+        console.log(response.status)
+        if (response.status === 200) {
+          console.log("yes")
+          setItems(
+            previousItems=>{
+              const updateItems = []
+              console.log(previousItems)
+              previousItems.forEach(element=>{
+                
+                if (element.id === id) {
+                  console.log(element)
+                  element.done = true
+                  updateItems.push(element)
+                }else{
+                  updateItems.push(element)
+                }
+              })
+              console.log(updateItems)
+              return updateItems;
+        }
+        )
+        }
+        // return response.json();
+      })
+      // .then((data) => {
+      //   console.log(data)
+      //   // Affichage();
+      //   setItems(
+      //     previousItems=>{
+      //       const updateItems = previousItems.filter( item=> item.id !== id )
+      //       return updateItems;
+      // }
+      // )
+      // });
+    }else{
+      console.log('Nooo')
+
+      fetch(`https://todos-af6ae-default-rtdb.firebaseio.com/todos/${id}/done.json`, {
+      method: "PUT",
+      body: false,
+    })
+      .then((response) => {
+        console.log(response)
+        console.log(response.status)
+        if (response.status === 200) {
+          console.log("yes")
+          setItems(
+            previousItems=>{
+              const updateItems = []
+              previousItems.forEach( item=>{
+                if (item.id !== id) {
+                  updateItems.push(item)
+                }else{
+                  updateItems.push({
+                    id : id,
+                    bodyText : item.bodyText
+                  })
+                }
+              })
+              return updateItems;
+        }
+        )
+        }
+        // return response.json();
+      })
+      // .then((data) => {
+      //   console.log(data)
+      //   // Affichage();
+      //   setItems(
+      //     previousItems=>{
+      //       const updateItems = previousItems.filter( item=> item.id !== id )
+      //       return updateItems;
+      // }
+      // )
+      // });
+
+    }
+
+
+  }
+
   return (
     <div>
       <InputAddTodo onAddNewTodod={AddNewTodo} />
       {IsLoading ? (
-        <div>
+        <div className="loadingContainer">
           <p>Loading...</p>
         </div>
       ) : (
-        <TodoList items={items} onDelete={DeleteClickedTodo} />
+        <TodoList items={items} onDelete={DeleteClickedTodo} onDoneEdit={onDoneEdit} />
       )}
       <Footer />
     </div>

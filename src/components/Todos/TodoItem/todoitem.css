@@ -1,7 +1,7 @@
 .todoItem{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column; */
+    justify-content:space-between;
     width: 50vw;
     height: 50px;
     background-color: #9c27b0;
@@ -10,4 +10,25 @@
     margin: 10px;
     padding-left: 30px;
     min-width: 350px;
+}
+
+.deleteThis{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+i{
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.todoItem.true{
+    /* text-decoration:line-through; */
+    background-color: #170231;
+}
+.todoItem.true p{
+    text-decoration:line-through;
+    /* background-color: #170231; */
 }

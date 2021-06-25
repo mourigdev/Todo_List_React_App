@@ -12,7 +12,7 @@ const TodoList = (props) =>{
         // return Array of TodoItems
         props.items.map(item=>{
             return(
-            <TodoItem key={item.id} id={item.id} onDelete={props.onDelete}>
+            <TodoItem key={item.id} id={item.id} done={item.done} onDelete={props.onDelete} onDoneEdit={props.onDoneEdit}>
                 {item.bodyText}
             </TodoItem>
             )
