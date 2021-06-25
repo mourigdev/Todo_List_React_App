@@ -1,0 +1,96 @@
+.containerForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.containerForm form {
+    width: 50vw;
+    min-width: 355px;
+    /* max-width: 60vw; */
+    height: 25vh;
+    /* border: solid 1px rgb(124, 124, 124); */
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgb(109 108 108 / 21%);
+    /* background-color: #fbfbfb; */
+    /* display: flex; */
+}
+
+.firstDiv{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.secondDiv{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.titlePContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.titlePContainer label {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    /* padding: 0; */
+}
+
+.inputContainer{
+    display: flex;
+    justify-content: center;
+}
+
+
+.inputContainer input{
+height: 36px;
+border: #e4e4e4 1px solid;
+/* outline: #673ab7 1px solid; */
+border-radius: 1px;
+width: 50%;
+margin: 0 5px;
+}
+
+.inputContainer input[type="text"]:focus {
+    outline: #9c27b0 1px solid;
+}
+
+.notValid {
+    outline: #ff0000 1px solid;
+}
+
+.valid {
+    outline: none;
+}
+
+.notValidLabel {
+    color: #ff0000;
+}
+
+.validLabel {
+    color: #9c27b0;
+}
+
+.inputContainer button{
+    width: 115px;
+    border: none;
+    background-color: #fcfcfc;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+    margin: 0px 5px;
+    height: 40px;
+    color: #82428d;
+    font-size: 20px;
+}
+
+.inputContainer button:hover {
+    background-color: #9c27b0;
+    color : #fff;
+}

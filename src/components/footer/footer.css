@@ -1,0 +1,31 @@
+.footer{
+    display: flex;
+    justify-content: center;
+}
+
+.footer .licenseContainer {
+    display: flex;
+    width: 52vw;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.footer .licenseContainer p {
+    color: #989898;
+    padding: 0;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.footer .licenseContainer p a {
+    color: #9c27b0;
+    text-decoration: none;
+}
+
+.footer .licenseContainer p span {
+    font-size: 26px;
+    color: #9c27b0;
+}
