@@ -8,7 +8,7 @@ const TodoItem = (props) =>{
 
     const DoneHandler = (e) =>{
         if(e.target.className !== 'ri-close-circle-line'){
-            props.onDoneEdit(props.id,props.children,props.done)
+            props.onDoneEdit(props.id,props.done)
         }
     }
 

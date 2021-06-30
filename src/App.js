@@ -50,24 +50,30 @@ function App() {
 
   const DeleteClickedTodo = (id) => {
     console.log(id);
+    setItems(
+      previousItems=>{
+        const updateItems = previousItems.filter( item=> item.id !== id )
 
+        return updateItems;
+  }
+  )
     fetch(`https://todos-af6ae-default-rtdb.firebaseio.com/todos/${id}.json`, {
       method: "DELETE",
     })
-    .then((response) => {
-        console.log(response.status)
-        if (response.status === 200) {
-          console.log("yes")
-          setItems(
-            previousItems=>{
-              const updateItems = previousItems.filter( item=> item.id !== id )
+    // .then((response) => {
+    //     console.log(response.status)
+    //     // if (response.status === 200) {
+    //       console.log("yes")
+    //     //   setItems(
+    //     //     previousItems=>{
+    //     //       const updateItems = previousItems.filter( item=> item.id !== id )
 
-              return updateItems;
-        }
-        )
-        }
-        // return response.json();
-      })
+    //     //       return updateItems;
+    //     // }
+    //     // )
+    //     // }
+    //     // return response.json();
+    //   })
       // .then((data) => {
       //   console.log(data)
       //   // Affichage();
@@ -88,6 +94,7 @@ function App() {
         done : false
       }),
     }).then((response) => {
+      console.log(response)
       Affichage()
       // if(response.status === 200){
       //   setItems((previousItems) => {
@@ -122,7 +129,7 @@ function App() {
   // }
 
 
-  const onDoneEdit = (id,bodyText,status) =>{
+  const onDoneEdit = (id,status) =>{
     console.log(status)
     console.log(id)
     if(status !== true){
@@ -130,10 +137,10 @@ function App() {
       method: "PUT",
       body: true,
     })
-      .then((response) => {
-        console.log(response)
-        console.log(response.status)
-        if (response.status === 200) {
+      // .then((response) => {
+        // console.log(response)
+        // console.log(response.status)
+        // if (response.status === 200) {
           console.log("yes")
           setItems(
             previousItems=>{
@@ -153,9 +160,9 @@ function App() {
               return updateItems;
         }
         )
-        }
+        // }
         // return response.json();
-      })
+      // })
       // .then((data) => {
       //   console.log(data)
       //   // Affichage();
@@ -173,10 +180,10 @@ function App() {
       method: "PUT",
       body: false,
     })
-      .then((response) => {
-        console.log(response)
-        console.log(response.status)
-        if (response.status === 200) {
+      // .then((response) => {
+        // console.log(response)
+        // console.log(response.status)
+        // if (response.status === 200) {
           console.log("yes")
           setItems(
             previousItems=>{
@@ -194,9 +201,9 @@ function App() {
               return updateItems;
         }
         )
-        }
+        // }
         // return response.json();
-      })
+      // })
       // .then((data) => {
       //   console.log(data)
       //   // Affichage();
