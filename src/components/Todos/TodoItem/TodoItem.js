@@ -2,6 +2,7 @@ import "./todoitem.css";
 // import { BsFillXCircleFill } from "react-icons/bs";
 const TodoItem = (props) =>{
 
+
     const deleteHandler = () =>{
         props.onDelete(props.id)
     }
@@ -21,5 +22,7 @@ const TodoItem = (props) =>{
         </li>
     )
 }
+
+
 
 export default TodoItem;

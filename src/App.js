@@ -19,7 +19,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   const Affichage = () => {
-    {
+    
       SetIsLoading(true);
       fetch("https://todos-af6ae-default-rtdb.firebaseio.com/todos.json", {
         method: "GET",
@@ -43,7 +43,7 @@ function App() {
             return allTodos;
           });
         });
-    }
+    
   };
 
   useEffect(Affichage, []);
